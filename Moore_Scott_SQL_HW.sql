@@ -25,7 +25,15 @@ SELECT * FROM employee WHERE (firstname = 'Andrew' AND reportsto IS NULL);
 
 --2.2 ORDER BY
 --Task – Select all albums in Album table and sort result set in descending order by title.
+
+SELECT * FROM album ORDER BY title DESC;
+-- DONE!
+
 --Task – Select first name from Customer and sort result set in ascending order by city
+
+SELECT firstname FROM customer ORDER BY city;
+-- DONE!
+
 --2.3 INSERT INTO
 --Task – Insert two new records into Genre table
 --Task – Insert two new records into Employee table
