@@ -3,12 +3,26 @@
 --1.0 Setting up Oracle Chinook
 --In this section you will begin the process of working with the Oracle Chinook database
 --Task – Open the Chinook_Oracle.sql file and execute the scripts within.
+-- DONE!
+
 --2.0 SQL Queries
 --In this section you will be performing various queries against the Oracle Chinook database.
 --2.1 SELECT
 --Task – Select all records from the Employee table.
+
+SELECT * FROM employee;
+-- DONE!
+
 --Task – Select all records from the Employee table where last name is King.
+
+SELECT * FROM employee WHERE (lastname = 'King');
+-- DONE!
+
 --Task – Select all records from the Employee table where first name is Andrew and REPORTSTO is NULL.
+
+SELECT * FROM employee WHERE (firstname = 'Andrew' AND reportsto IS NULL);
+-- DONE!
+
 --2.2 ORDER BY
 --Task – Select all albums in Album table and sort result set in descending order by title.
 --Task – Select first name from Customer and sort result set in ascending order by city
