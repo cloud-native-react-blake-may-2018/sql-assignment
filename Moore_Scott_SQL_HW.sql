@@ -187,5 +187,12 @@ SELECT artist.name AS name, album.title AS title FROM album RIGHT JOIN (artist) 
 
 --7.4 CROSS
 --Task – Create a cross join that joins album and artist and sorts by artist name in ascending order.
+
+SELECT * FROM album
+    CROSS JOIN (artist)
+        ORDER BY (artist.name);
+        
+-- Silly, but valid. DONE!
+
 --7.5 SELF
 --Task – Perform a self-join on the employee table, joining on the reportsto column.
