@@ -157,6 +157,15 @@ SELECT MAX(unitprice) FROM track;
 --In this section you will be working with combing various tables through the use of joins. You will work with outer, inner, right, left, cross, and self joins.
 --7.1 INNER
 --Task – Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
+
+SELECT * FROM customer;
+SELECT * FROM invoice;
+
+SELECT invoice.invoiceid AS invoiceid, customer.firstname AS firstname, customer.lastname AS lastname FROM invoice
+    INNER JOIN (customer) USING (customerid);
+    
+-- DONE!
+
 --7.2 OUTER
 --Task – Create an outer join that joins the customer and invoice table, specifying the CustomerId, firstname, lastname, invoiceId, and total.
 --7.3 RIGHT
