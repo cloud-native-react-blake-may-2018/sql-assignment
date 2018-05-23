@@ -22,13 +22,11 @@
     INSERT INTO genre (genreid, name)
         VALUES (27, 'Super cool new genre');
 --Task – Insert two new records into Employee table
-Select * from employee;
     INSERT INTO employee (employeeid, lastname, firstname, title, reportsto, birthdate, hiredate, address, city, state,country, postalcode, phone, fax, email)
         VALUES (9, 'Cross', 'Shawn', 'Guy that ', 5, TO_DATE('12-APR-89', 'DD-MON-RR'), TO_DATE('9-OCT-50','DD-MON-RR'), '25095 E Bolton Rd', 'Veneta', 'OR', 'USA', '97448', '+1 (541) 359-5880)', '(541)', 'smcross16@gmail.com'); 
     INSERT INTO employee (employeeid, lastname, firstname, title, reportsto, birthdate, hiredate, address, city, state,country, postalcode, phone, fax, email)
         VALUES (10, 'Cross', 'Jim', 'Guy that numero dos', 5, TO_DATE('12-APR-89', 'DD-MON-RR'), TO_DATE('9-OCT-50','DD-MON-RR'), '25095 E Bolton Rd', 'Veneta', 'OR', 'USA', '97448', '+1 (541) 359-5880)', '(541)', 'smcross16@gmail.com');
 --Task – Insert two new records into Customer table
-select * from customer;
     INSERT INTO customer (customerid, firstname, lastname, company, address, city, state, country, postalcode, phone, fax, email, supportrepid)
         VALUES (60, 'Jim', 'Jam', 'The Best Company', '123 A St', 'Eugene', 'OR', 'United States', '97402', '+1 541 373 7777', null, 'anemail@anemail.com', 4);
     INSERT INTO customer (customerid, firstname, lastname, company, address, city, state, country, postalcode, phone, fax, email, supportrepid)
@@ -39,7 +37,6 @@ select * from customer;
     SET firstname = 'Robert', lastname = 'Walter'
     WHERE firstname = 'Aaron' AND lastname = 'Mitchell';
 --Task – Update name of artist in the Artist table “Creedence Clearwater Revival” to “CCR”
-select * From artist;
     UPDATE artist 
     SET name = 'CCR'
     WHERE name = 'Creedence Clearwater Revival';
@@ -56,33 +53,102 @@ select * From artist;
     WHERE hiredate BETWEEN TO_DATE('01-JUN-03', 'DD-MON-RR') AND TO_DATE('01-MAR-04', 'DD-MON-RR');
 --2.7 DELETE
 --Task – Delete a record in Customer table where the name is Robert Walter (There may be constraints that rely on this, find out how to resolve them).
-    DELETE FROM invoice 
-    WHERE customerid = 
-        (SELECT customerid FROM customer 
-         WHERE firstname = 'Robert' AND lastname = 'Walter');
-        
+    delete from invoiceline where invoicelineid = 621;
+    delete from invoiceline where invoicelineid = 622;
+    delete from invoiceline where invoicelineid = 623;
+    delete from invoiceline where invoicelineid = 624;
+    delete from invoiceline where invoicelineid = 625;
+    delete from invoiceline where invoicelineid = 626;
+    delete from invoiceline where invoicelineid = 627;
+    delete from invoiceline where invoicelineid = 628;
+    delete from invoiceline where invoicelineid = 629;
     
-    DELETE FROM customer 
-    WHERE firstname = 'Robert' AND lastname = 'Walter';
+    delete from invoiceline where invoicelineid = 1860;
+    
+    delete from invoiceline where invoicelineid = 1329;
+    delete from invoiceline where invoicelineid = 1330;
+    delete from invoiceline where invoicelineid = 1447;
+    delete from invoiceline where invoicelineid = 1448;
+    delete from invoiceline where invoicelineid = 1449;
+    delete from invoiceline where invoicelineid = 1450;
+    
+    delete from invoiceline where invoicelineid = 337;
+    delete from invoiceline where invoicelineid = 338;
+    delete from invoiceline where invoicelineid = 339;
+    delete from invoiceline where invoicelineid = 326;
+    delete from invoiceline where invoicelineid = 327;
+    delete from invoiceline where invoicelineid = 328;
+    delete from invoiceline where invoicelineid = 329;
+    delete from invoiceline where invoicelineid = 330;
+    delete from invoiceline where invoicelineid = 331;
+    delete from invoiceline where invoicelineid = 332;
+    delete from invoiceline where invoicelineid = 333;
+    delete from invoiceline where invoicelineid = 334;
+    delete from invoiceline where invoicelineid = 335;
+    delete from invoiceline where invoicelineid = 336;
+    
+    delete from invoiceline where invoicelineid = 1565;
+    delete from invoiceline where invoicelineid = 1566;
+    delete from invoiceline where invoicelineid = 1567;
+    delete from invoiceline where invoicelineid = 1568;
+    delete from invoiceline where invoicelineid = 1569;
+    delete from invoiceline where invoicelineid = 1570;
+    
+    delete from invoiceline where invoicelineid = 267;
+    delete from invoiceline where invoicelineid = 268;
+    
+    delete from invoice where invoiceid = 116;
+    delete from invoice where invoiceid = 342;
+    delete from invoice where invoiceid = 245;
+    delete from invoice where invoiceid = 268;
+    delete from invoice where invoiceid = 290;
+    delete from invoice where invoiceid = 50;
+    delete from invoice where invoiceid = 61;
+    
+    delete from customer where firstname = 'Robert' and lastname = 'Walter';
+
 --
 --3.0	SQL Functions
 --In this section you will be using the Oracle system functions, as well as your own functions, to perform various actions against the database
 --3.1 System Defined Functions
 --Task – Use a function that returns the current time.
+    SELECT TO_CHAR
+        (LOCALTIMESTAMP, 'HH:MI:SS')
+        FROM DUAL;
 --Task – Use a function that returns the length of a mediatype from the mediatype table
+    SELECT name, LENGTH(name) FROM mediatype;
 --3.2 System Defined Aggregate Functions
 --Task – Use a function that returns the average total of all invoices
+    Select AVG(total) FROM invoice;
 --Task – Use a function that returns the most expensive track
+    SELECT MAX(unitprice) FROM track;
 --7.0 JOINS
 --In this section you will be working with combing various tables through the use of joins. You will work with outer, inner, right, left, cross, and self joins.
 --7.1 INNER
 --Task – Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
+    SELECT firstname, lastname, invoiceid 
+        FROM customer c 
+            INNER JOIN invoice i 
+            ON (c.customerid = i.customerid);
 --7.2 OUTER
 --Task – Create an outer join that joins the customer and invoice table, specifying the CustomerId, firstname, lastname, invoiceId, and total.
+    SELECT c.customerid, firstname, lastname, invoiceid, total 
+        FROM customer c 
+            FULL JOIN invoice i 
+            ON (c.customerid = i.customerid);    
 --7.3 RIGHT
 --Task – Create a right join that joins album and artist specifying artist name and title.
+    SELECT name, title 
+        FROM album a 
+            RIGHT JOIN artist ar
+            ON (a.artistid = ar.artistid);
 --7.4 CROSS
 --Task – Create a cross join that joins album and artist and sorts by artist name in ascending order.
+    SELECT * FROM album 
+        CROSS JOIN artist
+        ORDER BY name ASC;
+    
 --7.5 SELF
 --Task – Perform a self-join on the employee table, joining on the reportsto column.
---
+    SELECT * FROM employee;
+    SELECT * FROM employee emp INNER JOIN employee man ON emp.reportsto = man.employeeid;
