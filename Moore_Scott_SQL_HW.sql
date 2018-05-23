@@ -142,7 +142,17 @@ SELECT LENGTH(name) FROM mediatype WHERE mediatypeid = 3;
 
 --3.2 System Defined Aggregate Functions
 --Task – Use a function that returns the average total of all invoices
+
+SELECT AVG(total) FROM invoice;
+
+-- DONE!
+
 --Task – Use a function that returns the most expensive track
+
+SELECT MAX(unitprice) FROM track;
+
+-- DONE!
+
 --7.0 JOINS
 --In this section you will be working with combing various tables through the use of joins. You will work with outer, inner, right, left, cross, and self joins.
 --7.1 INNER
