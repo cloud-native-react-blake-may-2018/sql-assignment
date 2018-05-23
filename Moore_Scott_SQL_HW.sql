@@ -115,6 +115,14 @@ SELECT * FROM employee
 --2.7 DELETE
 --Task – Delete a record in Customer table where the name is Robert Walter (There may be constraints that rely on this, find out how to resolve them).
 --
+
+SELECT * FROM customer;
+ALTER TABLE customer DISABLE CONSTRAINT PK_Customer CASCADE;
+DELETE FROM customer WHERE firstname = 'Robert' AND lastname = 'Walter';
+SELECT * FROM customer;
+
+-- DONE!
+
 --3.0 SQL Functions
 --In this section you will be using the Oracle system functions, as well as your own functions, to perform various actions against the database
 --3.1 System Defined Functions
