@@ -177,6 +177,14 @@ SELECT customer.customerid as customerid, customer.firstname AS firstname, custo
 
 --7.3 RIGHT
 --Task – Create a right join that joins album and artist specifying artist name and title.
+
+SELECT * FROM album;
+SELECT * FROM artist;
+
+SELECT artist.name AS name, album.title AS title FROM album RIGHT JOIN (artist) USING(artistid);
+
+-- DONE!
+
 --7.4 CROSS
 --Task – Create a cross join that joins album and artist and sorts by artist name in ascending order.
 --7.5 SELF
