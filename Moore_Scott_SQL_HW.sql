@@ -89,14 +89,29 @@ UPDATE artist SET name = 'CCR'
     WHERE name = 'Creedence Clearwater Revival';
 SELECT * FROM artist WHERE artistid = 76;
 
+-- DONE!
+
 --2.5 LIKE
 --Task – Select all invoices with a billing address like “T%”
 
 SELECT * FROM invoice WHERE billingaddress LIKE 'T%';
 
+-- DONE!
+
 --2.6 BETWEEN
 --Task – Select all invoices that have a total between 15 and 50
+
+SELECT * FROM invoice WHERE total BETWEEN 15 AND 50;
+
+-- DONE!
+
 --Task – Select all employees hired between 1st of June 2003 and 1st of March 2004
+
+SELECT * FROM employee
+    WHERE hiredate BETWEEN '01-JUN-03' AND '01-MAR-04';
+    
+-- DONE!
+
 --2.7 DELETE
 --Task – Delete a record in Customer table where the name is Robert Walter (There may be constraints that rely on this, find out how to resolve them).
 --
