@@ -86,7 +86,11 @@ delete customer where firstname = 'Robert' and lastname = 'Walter';
 --In this section you will be using the Oracle system functions, as well as your own functions, to perform various actions against the database
 --3.1 System Defined Functions
 --Task – Use a function that returns the current time.
+select to_char(localtimestamp, 'hh:mi:ss am') as time from dual;
+
+
 --Task – Use a function that returns the length of a mediatype from the mediatype table
+select length(name) as length from mediatype;
 
 --3.2 System Defined Aggregate Functions
 --Task – Use a function that returns the average total of all invoices
