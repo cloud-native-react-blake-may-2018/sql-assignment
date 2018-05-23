@@ -22,6 +22,7 @@ select title from Album order by title desc;
 --Task – Select first name from Customer and sort result set in ascending order by city
 select title from Album order by title;
 
+
 --2.3 INSERT INTO
 --Task – Insert two new records into Genre table
 insert into genre (name, genreid) values 
@@ -29,6 +30,7 @@ insert into genre (name, genreid) values
 
 insert into genre (name, genreid) values 
     ('Chillwave', 27);
+
 
 --Task – Insert two new records into Employee table
 insert into employee (employeeid, firstname, lastname, birthdate, email, phone, fax, address, city, state, country, postalcode, title, hiredate, reportsto) 
@@ -47,12 +49,25 @@ insert into customer (firstname, lastname, company, email, phone, fax, address, 
 
 --2.4 UPDATE
 --Task – Update Aaron Mitchell in Customer table to Robert Walter
+update customer 
+    set firstname = 'Robert', lastname = 'Walter' 
+    where firstname = 'Aaron' and lastname = 'Mitchell';
+
 --Task – Update name of artist in the Artist table “Creedence Clearwater Revival” to “CCR”
+update artist
+    set name = 'CCR'
+    where name = 'Creedence Clearwater Revival';
+
+
 --2.5 LIKE
 --Task – Select all invoices with a billing address like “T%”
+select * from invoice where billingaddress like 'T%';
+
 --2.6 BETWEEN
 --Task – Select all invoices that have a total between 15 and 50
 --Task – Select all employees hired between 1st of June 2003 and 1st of March 2004
+
+
 --2.7 DELETE
 --Task – Delete a record in Customer table where the name is Robert Walter (There may be constraints that rely on this, find out how to resolve them).
 
