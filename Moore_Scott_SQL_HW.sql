@@ -74,6 +74,14 @@ SELECT * FROM customer;
 
 --2.4 UPDATE
 --Task – Update Aaron Mitchell in Customer table to Robert Walter
+
+SELECT * FROM customer WHERE (firstname = 'Aaron');
+UPDATE customer SET firstname = 'Robert', lastname = 'Walter'
+    WHERE customerid = 32;
+SELECT * FROM customer;
+
+-- DONE!
+
 --Task – Update name of artist in the Artist table “Creedence Clearwater Revival” to “CCR”
 --2.5 LIKE
 --Task – Select all invoices with a billing address like “T%”
