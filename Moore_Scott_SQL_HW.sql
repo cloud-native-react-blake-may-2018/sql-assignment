@@ -196,3 +196,7 @@ SELECT * FROM album
 
 --7.5 SELF
 --Task – Perform a self-join on the employee table, joining on the reportsto column.
+SELECT * FROM employee
+    JOIN (employee) USING (reportsto);
+    
+-- Done?
