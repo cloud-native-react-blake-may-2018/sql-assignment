@@ -127,7 +127,19 @@ SELECT * FROM customer;
 --In this section you will be using the Oracle system functions, as well as your own functions, to perform various actions against the database
 --3.1 System Defined Functions
 --Task – Use a function that returns the current time.
+
+SELECT TO_CHAR
+    (SYSDATE, 'mm-dd-yyyy hh24:mi:ss') "NOW"
+    FROM DUAL;
+    
+-- Close. Revisit later.
+
 --Task – Use a function that returns the length of a mediatype from the mediatype table
+
+SELECT LENGTH(name) FROM mediatype WHERE mediatypeid = 3;
+
+-- DONE!
+
 --3.2 System Defined Aggregate Functions
 --Task – Use a function that returns the average total of all invoices
 --Task – Use a function that returns the most expensive track
