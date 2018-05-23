@@ -168,6 +168,13 @@ SELECT invoice.invoiceid AS invoiceid, customer.firstname AS firstname, customer
 
 --7.2 OUTER
 --Task – Create an outer join that joins the customer and invoice table, specifying the CustomerId, firstname, lastname, invoiceId, and total.
+
+SELECT customer.customerid as customerid, customer.firstname AS firstname, customer.lastname AS lastname,
+    invoice.invoiceid AS invoiceid, invoice.total AS total FROM invoice
+    FULL JOIN (customer) ON (customer.customerid = invoice.customerid);
+    
+-- DONE!
+
 --7.3 RIGHT
 --Task – Create a right join that joins album and artist specifying artist name and title.
 --7.4 CROSS
