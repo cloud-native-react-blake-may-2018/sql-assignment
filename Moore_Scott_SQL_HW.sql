@@ -36,8 +36,42 @@ SELECT firstname FROM customer ORDER BY city;
 
 --2.3 INSERT INTO
 --Task – Insert two new records into Genre table
+
+SELECT * FROM genre;
+INSERT INTO genre (genreid, NAME) VALUES(26, 'Broadway');
+INSERT INTO genre (genreid, name) VALUES(27, 'K-Pop');
+SELECT * FROM genre;
+-- DONE!
+
 --Task – Insert two new records into Employee table
+
+SELECT * FROM employee;
+INSERT INTO employee (employeeid, lastname, firstname, title, reportsto, birthdate, hiredate, address, city, state, country,
+    postalcode, phone, fax, email) VALUES (9, 'Kingston', 'Alfred', 'IT Staff', 6,
+    TO_DATE('1991-03-19 00:00:00', 'yyyy-mm-dd hh24:mi:ss'), TO_DATE('2015-05-02 00:00:00', 'yyyy-mm-dd hh24:mi:ss'),
+    '123 Fake St', 'Calgary', 'AB', 'Canada', 'T3B 0C5', '+1 (770) 221-5452', '+1 (403) 246-9800', 'AlKing@chinookcorp.com');
+INSERT INTO employee (employeeid, lastname, firstname, title, reportsto, birthdate, hiredate, address, city, state, country,
+    postalcode, phone, fax, email) VALUES (10, 'Roberts', 'Alice', 'IT Staff', 6,
+    TO_DATE('1991-03-19 00:00:00', 'yyyy-mm-dd hh24:mi:ss'), TO_DATE('2012-05-09 00:00:00', 'yyyy-mm-dd hh24:mi:ss'),
+    '404 Knotfound Ave', 'Calgary', 'AB', 'Canada', 'T3B 0C5', '+1 (706) 255-9041', '+1 (403) 246-9707',
+    'aroberts@chinookcorp.com');
+SELECT * FROM employee;
+
+-- DONE!
+
 --Task – Insert two new records into Customer table
+
+SELECT * FROM customer;
+INSERT INTO customer (customerid, firstname, lastname, address, city, state, country, postalcode, phone, email, supportrepid)
+    VALUES (60, 'Victoria', 'Huffman', '224 Wither Rd', 'Athens', 'GA', 'USA', '30601', '+1 (706) 367-2121', 'vic22@gmail.com',
+    3);
+INSERT INTO customer (customerid, firstname, lastname, address, city, state, country, postalcode, phone, email, supportrepid)
+    VALUES (61, 'Angela', 'Li', '2109 Argonne Ave', 'Atlanta', 'GA', 'USA', '30318', '+1 (770) 415-4576', 'alli101@gmail.com',
+    4);
+SELECT * FROM customer;
+
+-- DONE!
+
 --2.4 UPDATE
 --Task – Update Aaron Mitchell in Customer table to Robert Walter
 --Task – Update name of artist in the Artist table “Creedence Clearwater Revival” to “CCR”
