@@ -83,6 +83,12 @@ SELECT * FROM customer;
 -- DONE!
 
 --Task – Update name of artist in the Artist table “Creedence Clearwater Revival” to “CCR”
+
+SELECT * FROM artist WHERE (name = 'Creedence Clearwater Revival');
+UPDATE artist SET name = 'CCR'
+    WHERE name = 'Creedence Clearwater Revival';
+SELECT * FROM artist WHERE artistid = 76;
+
 --2.5 LIKE
 --Task – Select all invoices with a billing address like “T%”
 --2.6 BETWEEN
