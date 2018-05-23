@@ -91,6 +91,9 @@ SELECT * FROM artist WHERE artistid = 76;
 
 --2.5 LIKE
 --Task – Select all invoices with a billing address like “T%”
+
+SELECT * FROM invoice WHERE billingaddress LIKE 'T%';
+
 --2.6 BETWEEN
 --Task – Select all invoices that have a total between 15 and 50
 --Task – Select all employees hired between 1st of June 2003 and 1st of March 2004
