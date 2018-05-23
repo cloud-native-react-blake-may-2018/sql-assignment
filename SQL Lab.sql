@@ -150,5 +150,6 @@
     
 --7.5 SELF
 --Task – Perform a self-join on the employee table, joining on the reportsto column.
-    SELECT * FROM employee;
-    SELECT * FROM employee emp INNER JOIN employee man ON emp.reportsto = man.employeeid;
+    SELECT * FROM employee emp 
+        INNER JOIN employee man 
+        ON emp.reportsto = man.employeeid;
