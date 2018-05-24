@@ -75,18 +75,32 @@ select to_char(localtimestamp,'yyyy-mm-dd hh-mm') from DUAL;
 select * from mediatype
 where  length(name) = 40;
 --Task – Use a function that returns the average total of all invoices
-
+select AVG(total) from invoice;
 --Task – Use a function that returns the most expensive track
 --7.0 JOINS
 --In this section you will be working with combing various tables through the use of joins. You will work with outer, inner, right, left, cross, and self joins.
 --7.1 INNER
 --Task – Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
-
+select customer.firstname, customer.lastname,invoice.invoiceid
+    from customer inner join invoice 
+        on customer.customerid = invoice.customerid;
 --7.2 OUTER
 --Task – Create an outer join that joins the customer and invoice table, specifying the CustomerId, firstname, lastname, invoiceId, and total.
+select customer.customerid, customer.firstname, customer.lastname, invoice.invoiceid, invoice.total
+    from customer full outer join invoice 
+        on customer.customerid = invoice.customerid;
 --7.3 RIGHT
 --Task – Create a right join that joins album and artist specifying artist name and title.
+select artist.name, album.title
+    from album right join artist
+        on album.artistid=artist.artistid;
 --7.4 CROSS
 --Task – Create a cross join that joins album and artist and sorts by artist name in ascending order.
+select * 
+    from album cross join artist
+        order by name asc;
 --7.5 SELF
 --Task – Perform a self-join on the employee table, joining on the reportsto column.
+select * from 
+    employee e1 inner join employee e2
+        on e1.reportsto=e2.employeeid;
