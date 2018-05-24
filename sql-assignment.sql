@@ -88,34 +88,59 @@ delete customer where firstname = 'Robert' and lastname = 'Walter';
 --Task – Use a function that returns the current time.
 select to_char(localtimestamp, 'hh:mi:ss am') as time from dual;
 
-
 --Task – Use a function that returns the length of a mediatype from the mediatype table
 select length(name) as length from mediatype;
 
 --3.2 System Defined Aggregate Functions
 --Task – Use a function that returns the average total of all invoices
+select round(avg(total)) from invoice;
+
 --Task – Use a function that returns the most expensive track
+select max(unitprice) from track;
+
 
 --7.0 JOINS
 --In this section you will be working with combing various tables through the use of joins. You will work with outer, inner, right, left, cross, and self joins.
-
 --7.1 INNER
 --Task – Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
+select customer.firstname, customer.lastname, invoice.invoiceid
+from customer
+inner join invoice 
+on customer.customerid = invoice.invoiceid;
+
 
 --7.2 OUTER
 --Task – Create an outer join that joins the customer and invoice table, specifying the CustomerId, firstname, lastname, invoiceId, and total.
+select customer.customerid, customer.firstname, customer.lastname, invoice.invoiceid, invoice.total
+from customer
+full outer join invoice
+on customer.customerid = invoice.customerid;
+
 
 --7.3 RIGHT
 --Task – Create a right join that joins album and artist specifying artist name and title.
+select album.title, artist.name
+from album
+right join artist
+on artist.artistid = album.artistid;
+
 
 --7.4 CROSS
 --Task – Create a cross join that joins album and artist and sorts by artist name in ascending order.
+select artist.name, album.title
+from album
+cross join artist;
+
 
 --7.5 SELF
 --Task – Perform a self-join on the employee table, joining on the reportsto column.
+select e1.reportsto, e2.reportsto
+from employee e1, employee e2
+where e1.reportsto = e2.reportsto;
 
 
---select * from employee cross join customer;
-
+--select * from employee cross join customer
+select * from employee
+cross join customer;
 
 
