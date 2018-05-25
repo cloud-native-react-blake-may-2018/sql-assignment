@@ -1,0 +1,82 @@
+--
+--1.0	Setting up Oracle Chinook
+--In this section you will begin the process of working with the Oracle Chinook database
+--Task – Open the Chinook_Oracle.sql file and execute the scripts within.
+    --done
+--2.0 SQL Queries
+--In this section you will be performing various queries against the Oracle Chinook database.
+--2.1 SELECT
+--Task – Select all records from the Employee table.
+    SELECT * FROM Employee;
+--Task – Select all records from the Employee table where last name is King.
+    SELECT * FROM Employee WHERE lastname = 'King';
+--Task – Select all records from the Employee table where first name is Andrew and REPORTSTO is NULL.
+    SELECT * FROM Employee WHERE firstname = 'Andrew' AND REPORTSTO = null;
+--2.2 ORDER BY
+--Task – Select all albums in Album table and sort result set in descending order by title.
+    SELECT * FROM album ORDER BY title DESC;
+--Task – Select first name from Customer and sort result set in ascending order by city
+--2.3 INSERT INTO
+--Task – Insert two new records into Genre table
+--SELECT * FROM Genre;
+    INSERT INTO Genre (GENREID, NAME) VALUES (26,'Grundge');
+    INSERT INTO Genre (GENREID, NAME) VALUES (27,'Death Metal');
+--Task – Insert two new records into Employee table
+SELECT * FROM Employee;
+    INSERT INTO EMPLOYEE (EMPLOYEEID,LASTNAME,FIRSTNAME,TITLE,REPORTSTO,BIRTHDATE,HIREDATE,ADDRESS,CITY, STATE, COUNTRY, POSTALCODE, PHONE, FAX, EMAIL) VALUES (9,'Joe','Sarn','IT Staff',6,TO_DATE('1993-11-22 00:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2018-5-11 00:00:00','yyyy-mm-dd hh24:mi:ss'),'9525 sw 171st path','Miami','FL','USA','33196','+1 (305)-321-5240',null,null);
+    INSERT INTO Employee (EMPLOYEEID,LASTNAME,FIRSTNAME,TITLE,REPORTSTO,BIRTHDATE,HIREDATE,ADDRESS,CITY, STATE, COUNTRY,POSTALCODE,PHONE,FAX,EMAIL) VALUES (9,'Joe','Sarn','IT Staff',6,TO_DATE('1993-11-22 00:00:00','yyyy-mm-dd hh24:mi:ss'),TO_DATE('2018-2-18 00:00:00','yyyy-mm-dd hh24:mi:ss'),'8130 sw 99th Ave','Miami','FL','USA','33173','+1 (305)-279-2249',null,null);
+--Task – Insert two new records into Customer table
+SELECT* FROM Customer;
+    INSERT INTO Customer (CustomerId, FirstName, LastName, Company, Address, City, State, Country, PostalCode, Phone, Fax, Email, SupportRepId) VALUES (60, 'Joe', 'Sarn', 'Revature', '8130 sw 99th Ave', 'Miami', 'FL', 'USA', '33173', '+305-321-5240', '+55 (12) 3923-5566', 'Thisismyemail@emial.com', 3);
+        INSERT INTO Customer (CustomerId, FirstName, LastName, Company, Address, City, State, Country, PostalCode, Phone, Fax, Email, SupportRepId) VALUES (61, 'Joe', 'Sarn', 'Revature', '9525 sw 171st PATH', 'Miami', 'FL', 'USA', '33196', '+305-321-5240', '+55 (12) 3923-5566', 'thisismyothermail@email.com', 3);
+--2.4 UPDATE
+--Task – Update Aaron Mitchell in Customer table to Robert Walter
+SELECT * FROM CUSTOMER;
+    UPDATE Customer SET FIRSTNAME = 'Robert', LASTNAME = 'Walter' WHERE CUSTOMERID = 32;
+--Task – Update name of artist in the Artist table “Creedence Clearwater Revival” to “CCR”
+    UPDATE Artist SET name = 'CCR' WHERE name = 'Creedence Clearwater Revival';
+--2.5 LIKE
+--Task – Select all invoices with a billing address like “T%”
+SELECT * FROM INVOICE;
+    SELECT * FROM INVOICE WHERE BILLINGADDRESS like 'T%';
+--2.6 BETWEEN
+--Task – Select all invoices that have a total between 15 and 50
+    SELECT * FROM INVOICE WHERE TOTAL BETWEEN 15 AND 50;
+--Task – Select all employees hired between 1st of June 2003 and 1st of March 2004
+SELECT * FROM EMPLOYEE;
+    SELECT * FROM EMPLOYEE WHERE HIREDATE BETWEEN TO_DATE('2003-06-1 00:00:00','yyyy-mm-dd hh24:mi:ss') AND TO_DATE('2004-03-1 00:00:00','yyyy-mm-dd hh24:mi:ss');
+--2.7 DELETE
+--Task – Delete a record in Customer table where the name is Robert Walter (There may be constraints that rely on this, find out how to resolve them).
+    ALTER TABLE customer DISABLE CONSTRAINT PK_Customer CASCADE;
+    DELETE FROM customer WHERE firstname = 'Robert' AND lastname = 'Walter';
+    SELECT * FROM customer WHERE lastname ='Walter';
+--3.0	SQL Functions
+--In this section you will be using the Oracle system functions, as well as your own functions, to perform various actions against the database
+--3.1 System Defined Functions
+--Task – Use a function that returns the current time.
+    SELECT TO_CHAR (LOCALTIMESTAMP, 'DD-MON-RR HH.MI') FROM DUAL;
+--Task – Use a function that returns the length of a mediatype from the mediatype table
+    SELECT LENGTH(name)  FROM MEDIATYPE;
+--3.2 System Defined Aggregate Functions
+--Task – Use a function that returns the average total of all invoices 
+    SELECT AVG(total) FROM invoice;
+--Task – Use a function that returns the most expensive track
+    SELECT * FROM TRACK;
+    SELECT MAX(UNITPRICE) FROM TRACK;
+--7.0 JOINS
+--In this section you will be working with combing various tables through the use of joins. You will work with outer, inner, right, left, cross, and self joins.
+--7.1 INNER
+--Task – Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
+    SELECT CUSTOMER, INVOICEID FROM CUSTOMERS INNER JOIN INVOICE;
+--7.2 OUTER
+--Task – Create an outer join that joins the customer and invoice table, specifying the CustomerId, firstname, lastname, invoiceId, and total.
+    SELECT CustomerId, FirstName, LastName, InvoiceId, Total FROM CUSTOMER FULL OUTER JOIN INVOICE;
+--7.3 RIGHT
+--Task – Create a right join that joins album and artist specifying artist name and title.
+    SELECT ArtistName, Title FROM Album RIGHT JOIN Artist;
+--7.4 CROSS
+--Task – Create a cross join that joins album and artist and sorts by artist name in ascending order.
+    SELECT * FROM ALBUM CROSS JOIN ARTIST ORDER BY ARTIST.NAME ASC;
+--7.5 SELF
+--Task – Perform a self-join on the employee table, joining on the reportsto column.
+    SELECT REPORTSTO FROM EMPLOYEE;
